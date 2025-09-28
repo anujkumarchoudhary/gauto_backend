@@ -11,10 +11,10 @@ import upload from "../config/multer.config.js";
 
 const router = express.Router();
 
-router.post("/create", Authorization, upload.single("image"), createCar);
-router.patch("/:id", Authorization, upload.single("image"), updateCar);
-router.get("/getAll", Authorization, getAllCar);
-router.get("/:id", Authorization, getCarById);
-router.delete("/:id", Authorization, deleteCar);
+router.post("/create", upload.single("image"), createCar);
+router.patch("/:id", upload.single("image"), updateCar);
+router.get("/getAll", getAllCar);
+router.get("/:id", getCarById);
+router.delete("/:id", deleteCar);
 
 export default router;
