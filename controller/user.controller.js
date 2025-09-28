@@ -50,12 +50,12 @@ export const login = async (req, res) => {
         .status(401)
         .json({ status: 401, message: "Credential not valid" });
     }
-
-    const token = await jwt.sign(
-      { id: user._id, role: user.role },
-      process.env.SECRET_CODE,
-      { expiresIn: "7d" }
-    );
+    if (!process.env.SECRET_CODE) {
+      console.log("SECRET_CODE is missing!");
+    }
+    const token = await jwt.sign({ id: user._id }, process.env.SECRET_CODE, {
+      expiresIn: "7d",
+    });
 
     return res
       .status(200)
