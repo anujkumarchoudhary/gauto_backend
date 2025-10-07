@@ -32,6 +32,20 @@ export const createCar = async (req, res) => {
 };
 
 export const getAllCar = async (req, res) => {
+  try {
+    const services = await Car.find();
+
+    res.status(200).json({
+      status: "success",
+      message: "Retrieve all services successfully!",
+      data: services,
+    });
+  } catch (error) {
+    console.log("error", error);
+  }
+};
+
+export const getAllAggregatedCar = async (req, res) => {
   const { make, model, brand } = req.query;
 
   const query = {};
