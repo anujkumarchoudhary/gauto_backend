@@ -57,6 +57,7 @@ export const getAllCar = async (req, res) => {
 };
 
 export const findCar = async (req, res) => {
+  const data = req.body;
   try {
     const cars = await Car.find(data);
 
