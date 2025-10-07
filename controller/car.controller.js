@@ -39,9 +39,11 @@ export const getAllCar = async (req, res) => {
   if (model) query.model = model;
   if (brand) query.brand = brand;
   try {
+    const cars2 = await Car.find();
+
     const cars = await Car.find(query);
 
-    const brands = cars?.map((car) => car?.brand);
+    const brands = cars2?.map((car) => car?.brand);
 
     res.status(200).json({
       status: "success",
