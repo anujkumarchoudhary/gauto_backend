@@ -33,12 +33,16 @@ export const createCar = async (req, res) => {
 
 export const getAllCar = async (req, res) => {
   try {
-    const services = await Car.find();
+    const cars = await Car.find();
+
+    const brands = cars?.map((car) => car?.brand);
+    console.log(brands, "carBrand>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 
     res.status(200).json({
       status: "success",
-      message: "Retrieve all services successfully!",
-      data: services,
+      message: "Retrieve all cars successfully!",
+      data: cars,
+      brand: brands,
     });
   } catch (error) {
     console.log("error", error);
@@ -53,12 +57,12 @@ export const getAllAggregatedCar = async (req, res) => {
   if (model) query.model = model;
   if (brand) query.brand = brand;
   try {
-    const services = await Car.find(query);
+    const cars = await Car.find(query);
 
     res.status(200).json({
       status: "success",
-      message: "Retrieve all services successfully!",
-      data: services,
+      message: "Retrieve all cars successfully!",
+      data: cars,
     });
   } catch (error) {
     console.log("error", error);
