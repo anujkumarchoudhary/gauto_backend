@@ -56,6 +56,23 @@ export const getAllCar = async (req, res) => {
   }
 };
 
+export const findCar = async (req, res) => {
+  try {
+    const cars = await Car.find(data);
+
+    const brands = cars?.map((car) => car?.brand);
+
+    res.status(200).json({
+      status: "success",
+      message: "Retrieve all filter cars",
+      data: cars,
+      brand: brands,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 export const getAllAggregatedCar = async (req, res) => {
   const { make, model, brand } = req.query;
 

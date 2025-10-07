@@ -2,6 +2,7 @@ import express from "express";
 import {
   createCar,
   deleteCar,
+  findCar,
   getAllAggregatedCar,
   getAllCar,
   getCarById,
@@ -12,9 +13,10 @@ import { Authorization } from "../middleware/authorization.middleware.js";
 
 const router = express.Router();
 
-router.post("/create", Authorization, upload.single("image"), createCar);
+router.post("/create", upload.single("image"), createCar);
 router.patch("/:id", Authorization, upload.single("image"), updateCar);
 router.get("/getAll", getAllCar);
+router.get("/find", findCar);
 router.get("/getAggregated", getAllAggregatedCar);
 router.get("/:id", Authorization, getCarById);
 router.delete("/:id", Authorization, deleteCar);

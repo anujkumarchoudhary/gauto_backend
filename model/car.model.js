@@ -11,6 +11,11 @@ const schema = new Schema({
   drive: { type: String, required: false },
   description: { type: String, required: false },
   type: { type: String, required: true, enum: ["Sale", "Purchase"] },
+  from: { type: String, required: true },
+  to: { type: String, required: true },
+  isAc: { type: Boolean, required: true },
+  date: { type: String, default: new Date() },
+  time: { type: String, required: true },
 });
 
 export default mongoose.model("Car", schema);
