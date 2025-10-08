@@ -16,7 +16,7 @@ const router = express.Router();
 router.post("/create", upload.single("image"), createCar);
 router.patch("/:id", Authorization, upload.single("image"), updateCar);
 router.get("/getAll", getAllCar);
-router.get("/find", findCar);
+router.post ("/find", findCar);
 router.get("/getAggregated", getAllAggregatedCar);
 router.get("/:id", Authorization, getCarById);
 router.delete("/:id", Authorization, deleteCar);
